@@ -45,13 +45,12 @@ CREATE TABLE stars(
  - Testing: Ensure that the tests pass and have good coverage. The code itself does not need to be executable, but the tests should demonstrate the functionality.
 
 ## Setup
-
 ### Initialize database
 All these commands assume the current working directory is the top level directory of the project.
 
 Run mysql:
 ```
-$ mysql -u root
+$ mysql -u <mysql user>
 ```
 Inside mysql:
 ```
@@ -59,9 +58,16 @@ create database star_catalog;
 use star_catalog;
 source ./database/schema.sql
 ```
-
-Put your local mysql settings into `./config.yml`
-
+### Config.yml
+Put your local mysql settings into `./config.yml` with the following format:
+```
+database:
+  dbname: "<database name>"
+  dbuser: "<mysql user>"
+  dbpassword: "<mysql password>"
+  net: "tcp"
+  addr: "127.0.0.1:3306"
+```
 ### Run tests
 ```
 make test
